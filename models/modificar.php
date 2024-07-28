@@ -18,8 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param('sssssi', $nombre, $tipo_doc, $documento, $correo, $cargo, $id);
         if ($stmt->execute()) {
             header("Location: ../views/panel.php?status=sucess");
+            exit();
         } else {
             header("Location: ../views/panel.php?status=error");
+            exit();
         }
         $stmt->close();
     }else {

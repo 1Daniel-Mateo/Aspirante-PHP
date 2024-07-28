@@ -32,6 +32,10 @@ if (isset($_GET['status']) && $_GET['status'] == 'success') {
 if (isset($_GET['status']) && $_GET['status'] == 'salida') {
     echo "<p>Sesion Cerrada.</p>";
 }
+
+if (isset($_GET['status']) && $_GET['status'] == 'eliminar') {
+    echo "<p>Usuario Eliminado.</p>";
+}
 ?>
 
 

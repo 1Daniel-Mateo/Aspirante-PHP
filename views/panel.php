@@ -29,19 +29,42 @@ require_once '../models/consultar.php';
         <p>Cargo: <?php echo htmlspecialchars($usuario['cargo']); ?></p>
 
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modificar">Modificar Datos</button>
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminar">Eliminar Candicatura</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminar">Eliminar Vacante</button>
+
+        <!-- Ventana modal para Eliminar Candicatura Uso de Bootstrap 5-->
+        <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="eliminarLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="eliminarLabel">Verificación</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Estas seguro de eliminar tu vacante de nuestro proceso de seleción. 
+                        </p>
+                    </div>
+                    <form action="../models/eliminar.php" method="POST">
+                    <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Sí Eliminar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
 
     <?php
     if (isset($_GET['status']) && $_GET['status'] == 'sucess') {
         echo "<p>Datos modificados.</p>";
-    }else if (isset($_GET['status']) && $_GET['status'] == 'error') {
+    } else if (isset($_GET['status']) && $_GET['status'] == 'error') {
         echo "<p>Error.</p>";
     }
 
 
     ?>
-    
+
 
     <!-- Ventana modal para la modificacion de los datos del usuario -->
     <div class="modal fade" id="modificar" tabindex="-1" aria-labelledby="modificarLabel" aria-hidden="true">
@@ -82,37 +105,12 @@ require_once '../models/consultar.php';
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
 
-        <!-- Ventana modal para Eliminar Candicatura -->
-        <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="eliminarLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="eliminarLabel">New message</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="nombre" class="col-form-label">Recipient:</label>
-                                <input type="text" class="form-control" id="nombre">
-                            </div>
-                            <div class="mb-3">
-                                <label for="message-text" class="col-form-label">Message:</label>
-                                <textarea class="form-control" id="message-text"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+
 </body>
 
 </html>

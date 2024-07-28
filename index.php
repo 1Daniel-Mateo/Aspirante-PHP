@@ -3,28 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/formulario.css">
     <title>Login</title>
 </head>
 <body>
-    <h1>Formulario de registro</h1>
-    <form method="POST" action="models/login.php">
-    
-        <div>
+<div class="contenedor">
+    <form method="POST" action="models/login.php" class="form">
+    <h1 class="titulo">Inicia Sesión</h1>
+    <div class="campos">
+
+        <div class="group_form">
+            <input type="email" name="correo" placeholder=" ">
             <label for="correo">Correo electrónico</label>
-            <input type="email" name="correo" >
+            <span class="linea"></span>
         </div>
-    
-        <div>
+
+        <div class="group_form">
+            <input type="password" name="documento" placeholder=" ">
             <label for="documento">Contraseña</label>
-            <input type="password" name="documento" >
+            <span class="linea"></span>
         </div>
-    
-        <button type="submit">Iniciar sesión</button>
+
+        <button type="submit" class="boton">Iniciar sesión</button>
         <a href="views/registro.php">REGISTRO</a>
+
+        </div>
     </form>
+
+
     <?php
-    
+
 if (isset($_GET['status']) && $_GET['status'] == 'success') {
     echo "<p>Registro exitoso.</p>";
 }
@@ -43,5 +51,7 @@ if (isset($_GET['status']) && $_GET['status'] == 'eliminar') {
 <?php if (isset($_GET['error'])): ?>
         <p>Error: <?php echo htmlspecialchars($_GET['error']); ?></p>
     <?php endif; ?>
+
+</div>
 </body>
 </html>

@@ -8,7 +8,7 @@
 <body>
     <H1>Bienvenido a panel php</H1>
     <?php if (isset($_GET['success'])): ?>
-        <p>Success: <?php echo htmlspecialchars($_GET['success']); ?></p>
+        <p><?php echo htmlspecialchars($_GET['success']); ?></p>
     <?php endif; ?>
 </body>
 </html>

@@ -22,6 +22,12 @@
         <button type="submit">Iniciar sesión</button>
         <a href="views/registro.php">REGISTRO</a>
     </form>
+    <?php
+    
+if (isset($_GET['status']) && $_GET['status'] == 'success') {
+    echo "<p>Registro exitoso.</p>";
+}
+?>
 
 <?php if (isset($_GET['error'])): ?>
         <p>Error: <?php echo htmlspecialchars($_GET['error']); ?></p>

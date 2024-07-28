@@ -1,9 +1,3 @@
-<?php
-if (isset($_GET['status']) && $_GET['status'] == 'success') {
-    echo "<p>Registro exitoso.</p>";
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +9,7 @@ if (isset($_GET['status']) && $_GET['status'] == 'success') {
 <body>
     <H1>Formulario de registro</H1>
     
-    <form method="POST" action="../models/aspirante.php">
+    <form method="POST" action="../models/crear.php">
         <div>
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre">

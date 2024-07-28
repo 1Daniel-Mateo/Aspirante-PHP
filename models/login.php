@@ -23,6 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($result->num_rows > 0) {
             // Usuario autenticado con éxito
+            //Almacenamiento de id
+            $usuario = $result->fetch_assoc();
+            $_SESSION['id'] = $usuario['id'];
             header("Location: ../views/panel.php?success=Bienvenido a tu perfil de Aspirante en Grupo ASD");
             exit();
         } else {

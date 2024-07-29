@@ -17,25 +17,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Validar el nombre (solo letras y espacios)
     if (!preg_match("/^[a-zA-Z ]*$/", $nombre)) {
-        header("Location: ../views/registro.php?error=El nombre solo debe contener letras y espacios");
+        header("Location: ../views/registro.php?error=nombre");
         exit();
     }
-    // Validar el tipo de documento (solo letras y números)
+    // Validar el tipo de documento solo números
     if (!preg_match("/^[a-zA-Z0-9]*$/", $documento))
     {
-        header("Location: ../views/registro.php?error=Documento solo debe contar con numeros");
+        header("Location: ../views/registro.php?error=documento");
         exit();
     }
 
      // Validar el correo (formato de correo electrónico)
     if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../views/registro.php?error=El formato del correo no es válido");
+        header("Location: ../views/registro.php?error=correo");
         exit();
     }
 
     // Validar el cargo (solo letras y espacios)
     if (!preg_match("/^[a-zA-Z ]*$/", $cargo)) {
-        header("Location: ../views/registro.php?error=El cargo solo debe contener letras y espacios");
+        header("Location: ../views/registro.php?error=cargo");
         exit();
     }
 
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($resultCorreo->num_rows > 0) {
             // Correo ya registrado
-            header("Location: ../views/registro.php?error=El correo ya está registrado");
+            header("Location: ../views/registro.php?error=repetido");
             exit();
         }
 
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: ../index.php?status=success");
             exit();
         } else {
-            header("Location: ../index.php?error=Error al guardar los datos");
+            header("Location: ../views/registro.php?error=error");
             exit();
         }
 

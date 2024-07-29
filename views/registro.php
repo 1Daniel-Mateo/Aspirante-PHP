@@ -45,10 +45,27 @@
 
     <?php
     if (isset($_GET['campos']) && $_GET['campos'] == 'vacio') {
-        echo "<p class='mensaje-error visible'> Por favor, complete todos los campos.</p>";
-    }else if(isset($_GET['error']) && $_GET['error'] == 'nombre'){
-        echo "<p> Campos vacios.</p>";
+        echo "<p class='mensaje-error visible'> Por favor, complete todos los campos. </p>";
     }
+    if (isset($_GET['error']) && $_GET['error'] == 'nombre') {
+        echo "<p class='mensaje-error visible'> El nombre solo debe contener letras y espacios.</p>";
+    }
+    if (isset($_GET['error']) && $_GET['error'] == 'documento') {
+        echo "<p class='mensaje-error visible'> Documento solo debe contar con numeros.</p>";
+    }
+    if (isset($_GET['error']) && $_GET['error'] == 'correo') {
+        echo "<p class='mensaje-error visible'> El formato del correo no es válido.</p>";
+    }
+    if (isset($_GET['error']) && $_GET['error'] == 'cargo') {
+        echo "<p class='mensaje-error visible'> El cargo solo debe contener letras y espacios.</p>";
+    }
+    if (isset($_GET['error']) && $_GET['error'] == 'repetido') {
+        echo "<p class='mensaje-error visible'> El correo ya está registrado. </p>";
+    }
+    if (isset($_GET['error']) && $_GET['error'] == 'error') {
+        echo "<p class='mensaje-error visible'>Error al guardar los datos. </p>";
+    }
+
     ?>
 
     <script src="../js/mensaje.js"></script>

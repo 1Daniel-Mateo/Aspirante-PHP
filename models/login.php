@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Verificar si los campos están vacíos
     if (empty($correo) || empty($contraseña)) {
-        header("Location: ../index.php?error=Por favor, complete todos los campos");
+        header("Location: ../index.php?error=campos");
         exit();
     }
     
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         } else {
             // Error en la autenticación
-            header("Location: ../index.php?error=Correo o documento incorrecto");
+            header("Location: ../index.php?error=login");
             exit();
         }
 

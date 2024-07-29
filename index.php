@@ -8,7 +8,6 @@
     <title>Login</title>
 </head>
 <body>
-
     <form method="POST" action="models/login.php" class="form">
     <h1 class="titulo">Inicia Sesión</h1>
     <div class="campos">
@@ -35,15 +34,15 @@
     <?php
 
 if (isset($_GET['status']) && $_GET['status'] == 'success') {
-    echo "<p>Registro exitoso.</p>";
+    echo "<p class='mensaje-valido visible'> Registro exitoso.</p>";
 }
 
 if (isset($_GET['status']) && $_GET['status'] == 'salida') {
-    echo "<p>Sesion Cerrada.</p>";
+    echo "<p class='mensaje-valido visible'>Sesion Cerrada.</p>";
 }
 
 if (isset($_GET['status']) && $_GET['status'] == 'eliminar') {
-    echo "<p>Usuario Eliminado.</p>";
+    echo "<p class='mensaje-valido visible'>Usuario Eliminado.</p>";
 }
 ?>
 
@@ -53,5 +52,6 @@ if (isset($_GET['status']) && $_GET['status'] == 'eliminar') {
         <p>Error: <?php echo htmlspecialchars($_GET['error']); ?></p>
     <?php endif; ?>
 
+    <script src="js/mensaje.js"></script>
 </body>
 </html>

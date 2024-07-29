@@ -159,15 +159,27 @@ input:focus ~ .linea, input:not(:placeholder-shown) ~ .linea{
     transform: scale(1);
 }
 
-/* 
-.success{
-    border: 2px solid greenyellow;
-  }
-  
-  .error{
-    border: 2px solid red;
-  }
-  .hidden {
+.mensaje-error, .mensaje-valido {
+    color: white;
+    border-radius: 10px;
+    font-size: 15px;
+    margin: 10px;
+    padding: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+    position: absolute;
+}
+
+.mensaje-error {
+    background-color: red;
+}
+
+.mensaje-valido {
+    background-color: greenyellow;
+}
+
+.hidden {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s;
@@ -177,4 +189,4 @@ input:focus ~ .linea, input:not(:placeholder-shown) ~ .linea{
     visibility: visible;
     opacity: 1;
     transition: visibility 0s, opacity 0.5s;
-} */
+}

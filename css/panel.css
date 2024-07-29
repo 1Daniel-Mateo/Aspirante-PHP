@@ -9,11 +9,24 @@
 
 .panel {
     background-color: #fff;
-
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     padding: 20px;
     max-width: 600px;
     width: 100%;
+}
+
+@media (width > 700px){
+    .panel{
+        margin-left: 385px;
+        margin-top: 2%;
+        transition: 2s;
+    }
+}
+
+@media (width <= 700px){
+    .panel{
+        transition: 1s;
+    }
 }
 
 .panel h2 {

@@ -1,7 +1,10 @@
 <?php
+//conexion a base de datos
 include 'conexion.php';
+// Guardar las variables de inicio de sesión
 session_start();
 
+// Obtener los parametros desde el metodo post
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $correo = $_POST['correo'];
     $contraseña = $_POST['documento'];
@@ -26,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Almacenamiento de id
             $usuario = $result->fetch_assoc();
             $_SESSION['id'] = $usuario['id'];
-            header("Location: ../views/panel.php?success=Bienvenido a tu perfil de Aspirante en Grupo ASD");
+            header("Location: ../views/panel.php?status=saludo");
             exit();
         } else {
             // Error en la autenticación

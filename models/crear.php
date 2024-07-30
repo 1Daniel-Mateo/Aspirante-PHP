@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Verificar si los campos están vacíos
     if (empty($nombre) || empty($tipo_doc) || empty($documento) || empty($correo) || empty($cargo)) {
-        header("Location: ../views/registro.php?campos=vacio");
+        header("Location: ../views/registro.php?error=vacio");
         exit();
     }
 
@@ -21,15 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
     // Validar el tipo de documento solo números
-    if (!preg_match("/^[a-zA-Z0-9]*$/", $documento))
-    {
+    if (!preg_match("/^[[0-9]{5,15}]*$/", $documento)){
         header("Location: ../views/registro.php?error=documento");
-        exit();
-    }
-
-     // Validar el correo (formato de correo electrónico)
-    if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../views/registro.php?error=correo");
         exit();
     }
 

@@ -176,7 +176,7 @@ input:focus ~ .linea, input:not(:placeholder-shown) ~ .linea{
 }
 
 .mensaje-valido {
-    background-color: greenyellow;
+    background-color: rgb(37, 70, 199);
 }
 
 .hidden {

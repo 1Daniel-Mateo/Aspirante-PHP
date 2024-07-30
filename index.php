@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/formulario.css">
+    <meta name="description" content="Formulario de inicio de sesión para acceder a la plataforma.">
+    <meta name="keywords" content="login, inicio de sesión, portal, registro">
+    <meta name="Mateo" content="Grupo ASD">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="assets/css/formulario.css">
+    <link rel="icon" href="assets/img/icono.ico">
     <title>Login</title>
 </head>
-
 <body>
     <form method="POST" action="models/login.php" class="form">
         <h1 class="titulo">Inicia Sesión</h1>
@@ -27,32 +30,42 @@
             <button type="submit" class="boton">Iniciar sesión</button>
         </div>
     </form>
-
     <?php
-
-    if (isset($_GET['status']) && $_GET['status'] == 'success') {
-        echo "<p class='mensaje-valido visible'> Registro exitoso.</p>";
+    // Función para mostrar mensajes verificando el tipo
+    function mostrar_mensaje($tipo, $mensaje) {
+        echo "<p class='mensaje-$tipo visible'>$mensaje</p>";
     }
 
-    if (isset($_GET['status']) && $_GET['status'] == 'salida') {
-        echo "<p class='mensaje-valido visible'>Sesion Cerrada.</p>";
+    //Mensajes de confirmación
+    if (isset($_GET['status'])) {
+        switch ($_GET['status']) {
+            case 'success':
+                mostrar_mensaje('valido', 'Registro exitoso.');
+                break;
+            case 'salida':
+                mostrar_mensaje('valido', 'Sesion Cerrada.');
+                break;
+            case 'eliminar':
+                mostrar_mensaje('valido', 'Usuario Eliminado.');
+                break;
+        }
     }
 
-    if (isset($_GET['status']) && $_GET['status'] == 'eliminar') {
-        echo "<p class='mensaje-valido visible'>Usuario Eliminado.</p>";
-    }
     //Errores de ingreso
-    if (isset($_GET['error']) && $_GET['error'] == 'login') {
-        echo "<p class='mensaje-error visible'>Error en correo o contraseña. </p>";
+    if (isset($_GET['error'])) {
+        switch ($_GET['error']) {
+            case 'login':
+                mostrar_mensaje('error', 'Error en correo o contraseña.');
+                break;
+            case 'campos':
+                mostrar_mensaje('error', 'Por favor, complete todos los campos.');
+                break;
+            case 'sesion':
+                mostrar_mensaje('error', 'Debes iniciar sesión primero.');
+                break;
+        }
     }
-    if (isset($_GET['error']) && $_GET['error'] == 'campos') {
-        echo "<p class='mensaje-error visible'>Por favor, complete todos los campos. </p>";
-    }
-
-
     ?>
-
-    <script src="js/mensaje.js"></script>
+    <script src="assets/js/mensaje.js"></script>
 </body>
-
 </html>

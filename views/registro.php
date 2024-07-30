@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/formulario.css">
+    <meta name="description" content="Formulario de crear cuenta de vacante para acceder a portal.">
+    <meta name="keywords" content="login, inicio de sesión, portal, registro">
+    <meta name="Mateo" content="Grupo ASD">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="../assets/css/formulario.css">
+    <link rel="icon" href="../assets/img/icono.ico">
     <title>Registrar</title>
 </head>
 <body>
@@ -13,7 +18,7 @@
         <div class="campos">
             <div class="group_form">
                 <input type="text" id="nombre" name="nombre" placeholder=" ">
-                <label for="nombre">Nombre Completo</label>
+                <label for="nombre">Nombre completo</label>
                 <span class="linea"></span>
             </div>
             <select name="tipo_doc" class="seleccion">
@@ -21,11 +26,11 @@
                 <option value="CC">Cedula de Ciudadania</option>
                 <option value="CE">Cedula Extranjeria</option>
                 <option value="RT">Registro Civil</option>
-                <option value="TI">Tarjeta de I</option>
+                <option value="TI">Tarjeta de Identidad</option>
             </select>
             <div class="group_form">
                 <input type="text" id="documento" name="documento" placeholder=" ">
-                <label for="documento">Documento</label>
+                <label for="documento">No. documento</label>
                 <span class="linea"></span>
             </div>
             <div class="group_form">
@@ -35,39 +40,41 @@
             </div>
             <div class="group_form">
                 <input type="text" id="cargo" name="cargo" placeholder=" ">
-                <label for="cargo">Cargo a Aspirar</label>
+                <label for="cargo">Cargo aspirado</label>
                 <span class="linea"></span>
             </div>
-
             <button type="submit" class="boton">Registrar</button>
         </div>
     </form>
 
     <?php
-    if (isset($_GET['campos']) && $_GET['campos'] == 'vacio') {
-        echo "<p class='mensaje-error visible'> Por favor, complete todos los campos. </p>";
+    function mostrar_mensaje($tipo, $mensaje) {
+        echo "<p class='mensaje-$tipo visible'>$mensaje</p>";
     }
-    if (isset($_GET['error']) && $_GET['error'] == 'nombre') {
-        echo "<p class='mensaje-error visible'> El nombre solo debe contener letras y espacios.</p>";
+//Mensajes de error
+    if (isset($_GET['error'])) {
+        switch ($_GET['error']) {
+            case 'vacio':
+                mostrar_mensaje('error', 'Por favor, complete todos los campos.');
+                break;
+            case 'nombre':
+                mostrar_mensaje('error', 'El nombre solo debe contener letras y espacios.');
+                break;
+            case 'documento':
+                mostrar_mensaje('error', 'El documento solo debe contener números.');
+                break;
+            case 'cargo':
+                mostrar_mensaje('error', 'El cargo solo debe contener letras y espacios.');
+                break;
+            case 'repetido':
+                mostrar_mensaje('error', 'El correo ya está registrado.');
+                break;
+            case 'error':
+                mostrar_mensaje('error', 'Error al guardar los datos.');
+                break;
+        }
     }
-    if (isset($_GET['error']) && $_GET['error'] == 'documento') {
-        echo "<p class='mensaje-error visible'> Documento solo debe contar con numeros.</p>";
-    }
-    if (isset($_GET['error']) && $_GET['error'] == 'correo') {
-        echo "<p class='mensaje-error visible'> El formato del correo no es válido.</p>";
-    }
-    if (isset($_GET['error']) && $_GET['error'] == 'cargo') {
-        echo "<p class='mensaje-error visible'> El cargo solo debe contener letras y espacios.</p>";
-    }
-    if (isset($_GET['error']) && $_GET['error'] == 'repetido') {
-        echo "<p class='mensaje-error visible'> El correo ya está registrado. </p>";
-    }
-    if (isset($_GET['error']) && $_GET['error'] == 'error') {
-        echo "<p class='mensaje-error visible'>Error al guardar los datos. </p>";
-    }
-
     ?>
-
-    <script src="../js/mensaje.js"></script>
+    <script src="../assets/js/mensaje.js"></script>
 </body>
 </html>

@@ -1,0 +1,104 @@
+/*Contenedor que contiene todo la interfaz que tiene gradiante que cubre el 100% de la pantalla y 
+la tipografia */
+
+.contenedor {
+    font-family: sans-serif;
+    background-color: #e5e5f7;
+    background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    min-height: 100vh;
+}
+
+/* Este zona contine todos los estilos del panel
+incluye una condicion responsive en la cual cambiar el tamaño de la pantalla esta
+movera los objetos */
+.panel {
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+/*condicion donde si la pantalla es menor 700px reduzca el margen izquierdo 
+y la otra contiene una transcion para que el objeto vuelva de manera natural 
+a su posicion original*/
+@media (width > 700px){
+    .panel{
+        margin-left: 385px;
+        margin-top: 2%;
+        transition: 2s;
+    }
+}
+
+@media (width <= 700px){
+    .panel{
+        transition: 1s;
+    }
+}
+
+.panel h2 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: #444cf7;
+}
+
+/* Zona de los mensajes que mantienen un opacidad en 0 y se activan 1 para mostrar los mensajes en la
+interfaz*/
+.mensaje-error, .mensaje-valido {
+    color: white;
+    border-radius: 10px;
+    font-size: 15px;
+    margin: 10px;
+    padding: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+    position: absolute;
+}
+
+.mensaje-error {
+    background-color: red;
+}
+
+.mensaje-valido {
+    background-color:  rgb(37, 70, 199);
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+}
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.5s;
+}
+
+/*Pie de pagina */
+
+.final_pagina {
+    background-color: #1f2d4d;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    padding-bottom: 2.5rem;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;/*esta linea me permite organizar los elementos en múltiples lineas*/
+}
+
+
+.final_pagina p{
+    font-size: 15px;
+    margin: 0 auto;
+    padding: 1px 10px;
+}
